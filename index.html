@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EZ Lift Pressure Wash</title>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --blue: #1A3A6B;
+    --blue-dark: #0F2347;
+    --blue-mid: #1E4D8C;
+    --orange: #F47B20;
+    --orange-dark: #D9660F;
+    --white: #FFFFFF;
+    --white-soft: rgba(255,255,255,0.88);
+    --white-faint: rgba(255,255,255,0.12);
+  }
+
+  body {
+    font-family: 'Open Sans', sans-serif;
+    background: var(--blue);
+    color: var(--white);
+    line-height: 1.6;
+  }
+
+  /* NAV */
+  nav {
+    background: var(--blue-dark);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2.5rem;
+    height: 64px;
+    border-bottom: 3px solid var(--orange);
+  }
+
+  .nav-logo {
+    font-family: 'Oswald', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+
+  .nav-logo .ez { color: var(--orange); }
+  .nav-logo .lift { color: var(--white); }
+  .nav-logo .pw { color: var(--white-soft); font-weight: 400; font-size: 16px; }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: var(--white-soft);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--orange); }
+
+  .nav-cta {
+    background: var(--orange);
+    color: var(--white) !important;
+    padding: 8px 18px;
+    border-radius: 4px;
+  }
+
+  .nav-cta:hover { background: var(--orange-dark); color: var(--white) !important; }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(160deg, #0F2347 0%, #1A3A6B 50%, #1E4D8C 100%);
+    padding: 5rem 2.5rem 4rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 320px; height: 320px;
+    border-radius: 50%;
+    background: rgba(244,123,32,0.08);
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -80px; left: -40px;
+    width: 240px; height: 240px;
+    border-radius: 50%;
+    background: rgba(244,123,32,0.05);
+  }
+
+  .hero-badge {
+    display: inline-block;
+    background: rgba(244,123,32,0.15);
+    color: var(--orange);
+    border: 1px solid rgba(244,123,32,0.35);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 20px;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero h1 {
+    font-family: 'Oswald', sans-serif;
+    font-size: clamp(48px, 8vw, 80px);
+    font-weight: 700;
+    line-height: 1.0;
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+  }
+
+  .hero h1 .ez { color: var(--orange); }
+  .hero h1 .lift { color: var(--white); }
+  .hero h1 .pw { color: var(--white-soft); display: block; font-size: clamp(28px, 5vw, 50px); font-weight: 400; letter-spacing: 3px; margin-top: 4px; }
+
+  .hero-sub {
+    font-size: 17px;
+    color: rgba(255,255,255,0.7);
+    max-width: 520px;
+    margin: 1.25rem auto 2.25rem;
+  }
+
+  .hero-btns {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: var(--orange);
+    color: var(--white);
+    border: none;
+    padding: 14px 32px;
+    border-radius: 4px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.1s;
+  }
+
+  .btn-primary:hover { background: var(--orange-dark); transform: translateY(-1px); }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--white);
+    border: 2px solid rgba(255,255,255,0.4);
+    padding: 13px 32px;
+    border-radius: 4px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-decoration: none;
+    transition: border-color 0.2s, transform 0.1s;
+  }
+
+  .btn-outline:hover { border-color: var(--white); transform: translateY(-1px); }
+
+  /* STATS STRIP */
+  .stats-strip {
+    background: var(--orange);
+    padding: 1.1rem 2.5rem;
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+  }
+
+  .stat {
+    text-align: center;
+    color: var(--white);
+  }
+
+  .stat-num {
+    font-family: 'Oswald', sans-serif;
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 1.1;
+  }
+
+  .stat-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    opacity: 0.88;
+  }
+
+  /* SERVICES */
+  .section {
+    padding: 4rem 2.5rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-eyebrow {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 0.5rem;
+  }
+
+  .section h2 {
+    font-family: 'Oswald', sans-serif;
+    font-size: clamp(28px, 4vw, 40px);
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 2.5rem;
+    letter-spacing: 0.5px;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.25rem;
+  }
+
+  .service-card {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.13);
+    border-top: 3px solid var(--orange);
+    border-radius: 6px;
+    padding: 1.5rem;
+    transition: background 0.2s, transform 0.2s;
+  }
+
+  .service-card:hover {
+    background: rgba(255,255,255,0.11);
+    transform: translateY(-3px);
+  }
+
+  .service-icon {
+    font-size: 28px;
+    margin-bottom: 0.75rem;
+  }
+
+  .service-card h3 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.5px;
+  }
+
+  .service-card p {
+    font-size: 13.5px;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.55;
+  }
+
+  /* WHY US */
+  .why-section {
+    background: var(--blue-dark);
+    padding: 4rem 2.5rem;
+  }
+
+  .why-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  .why-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+    margin-top: 1.5rem;
+  }
+
+  .why-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .why-check {
+    width: 22px;
+    height: 22px;
+    background: var(--orange);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+    font-size: 12px;
+    font-weight: 700;
+    color: white;
+  }
+
+  .why-item p {
+    font-size: 15px;
+    color: rgba(255,255,255,0.82);
+    line-height: 1.5;
+  }
+
+  .why-item strong {
+    color: var(--white);
+    font-weight: 600;
+  }
+
+  .quote-block {
+    background: rgba(255,255,255,0.06);
+    border-left: 4px solid var(--orange);
+    border-radius: 0 6px 6px 0;
+    padding: 1.75rem 1.75rem 1.75rem 1.5rem;
+  }
+
+  .quote-text {
+    font-size: 18px;
+    font-style: italic;
+    color: rgba(255,255,255,0.85);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+  .quote-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--orange);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .quote-location {
+    font-size: 12px;
+    color: rgba(255,255,255,0.45);
+  }
+
+  /* CTA SECTION */
+  .cta-section {
+    background: var(--orange);
+    padding: 3.5rem 2.5rem;
+    text-align: center;
+  }
+
+  .cta-section h2 {
+    font-family: 'Oswald', sans-serif;
+    font-size: clamp(26px, 4vw, 38px);
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: 1px;
+    margin-bottom: 0.75rem;
+  }
+
+  .cta-section p {
+    color: rgba(255,255,255,0.85);
+    font-size: 16px;
+    margin-bottom: 1.75rem;
+  }
+
+  .btn-white {
+    background: var(--white);
+    color: var(--orange-dark);
+    border: none;
+    padding: 14px 36px;
+    border-radius: 4px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: transform 0.15s, opacity 0.15s;
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  .btn-white:hover { transform: translateY(-2px); opacity: 0.95; }
+
+  /* FOOTER */
+  footer {
+    background: var(--blue-dark);
+    padding: 2.5rem;
+    border-top: 3px solid rgba(244,123,32,0.3);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .footer-logo {
+    font-family: 'Oswald', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+
+  .footer-logo .ez { color: var(--orange); }
+
+  footer p {
+    font-size: 13px;
+    color: rgba(255,255,255,0.45);
+  }
+
+  .footer-phone {
+    font-size: 15px;
+    color: var(--orange);
+    font-weight: 600;
+  }
+
+  @media (max-width: 640px) {
+    nav { padding: 0 1.25rem; }
+    .nav-links { display: none; }
+    .hero { padding: 3.5rem 1.25rem 3rem; }
+    .stats-strip { gap: 1.5rem; }
+    .why-inner { grid-template-columns: 1fr; }
+    footer { flex-direction: column; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <span class="ez">EZ </span><span class="lift">LIFT </span><span class="pw">PRESSURE WASH</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#">Services</a></li>
+    <li><a href="#">About</a></li>
+    <li><a href="#">Gallery</a></li>
+    <li><a href="#" class="nav-cta">Free Quote</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">Residential &amp; Commercial</div>
+  <h1>
+    <span class="ez">EZ </span><span class="lift">LIFT</span>
+    <span class="pw">PRESSURE WASH</span>
+  </h1>
+  <p class="hero-sub">Blast away grime, mold, and years of buildup. Restoring surfaces to their original shine — fast, reliable, and at the right price.</p>
+  <div class="hero-btns">
+    <a href="#" class="btn-primary">Get a Free Quote</a>
+    <a href="#" class="btn-outline">See Our Work</a>
+  </div>
+</section>
+
+<!-- STATS STRIP -->
+<div class="stats-strip">
+  <div class="stat">
+    <div class="stat-num">500+</div>
+    <div class="stat-label">Jobs Completed</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">10+</div>
+    <div class="stat-label">Years Experience</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">100%</div>
+    <div class="stat-label">Satisfaction Guarantee</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">Same</div>
+    <div class="stat-label">Day Service Available</div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<div style="background: var(--blue);">
+  <div class="section">
+    <p class="section-eyebrow">What We Do</p>
+    <h2>Our Services</h2>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">🏠</div>
+        <h3>House Washing</h3>
+        <p>Soft wash treatment removes mold, mildew, algae, and dirt from all siding types without damage.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🚗</div>
+        <h3>Driveway &amp; Concrete</h3>
+        <p>High-pressure cleaning strips oil stains, rust, and years of traffic buildup from concrete and pavers.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🏗️</div>
+        <h3>Roof Cleaning</h3>
+        <p>Low-pressure soft wash kills black streaks and moss — extends roof life and boosts curb appeal.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🏢</div>
+        <h3>Commercial</h3>
+        <p>Fleet vehicles, storefronts, parking structures, and industrial surfaces — no job too large.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🪵</div>
+        <h3>Deck &amp; Fence</h3>
+        <p>Restore weathered wood and composite decking to like-new condition before sealing or staining.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🪟</div>
+        <h3>Gutters &amp; Soffits</h3>
+        <p>Tiger-stripe removal and interior gutter flush keeps water flowing where it should.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- WHY US -->
+<div class="why-section">
+  <div class="why-inner">
+    <div>
+      <p class="section-eyebrow">Why Choose Us</p>
+      <h2 style="margin-bottom: 0;">We Don't Cut Corners.</h2>
+      <ul class="why-list">
+        <li class="why-item">
+          <div class="why-check">✓</div>
+          <p><strong>Fully insured &amp; licensed</strong> — you're protected from start to finish.</p>
+        </li>
+        <li class="why-item">
+          <div class="why-check">✓</div>
+          <p><strong>Eco-friendly detergents</strong> — safe for your kids, pets, and landscaping.</p>
+        </li>
+        <li class="why-item">
+          <div class="why-check">✓</div>
+          <p><strong>Upfront flat-rate pricing</strong> — no surprises, no hidden fees when the job is done.</p>
+        </li>
+        <li class="why-item">
+          <div class="why-check">✓</div>
+          <p><strong>Locally owned &amp; operated</strong> — we live here, so our reputation matters to us.</p>
+        </li>
+        <li class="why-item">
+          <div class="why-check">✓</div>
+          <p><strong>Same-day availability</strong> — because sometimes you need it done now.</p>
+        </li>
+      </ul>
+    </div>
+    <div class="quote-block">
+      <p class="quote-text">"I had black streaks on my roof and a driveway I was embarrassed to have guests see. EZ Lift made both look brand new — showed up on time and cleaned up everything. Couldn't be happier."</p>
+      <p class="quote-name">— David R.</p>
+      <p class="quote-location">Residential customer</p>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-section">
+  <h2>Ready to See the Difference?</h2>
+  <p>Free, no-obligation estimates. We'll come out, take a look, and give you a straight price.</p>
+  <a href="#" class="btn-white">Get My Free Quote →</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">
+    <span class="ez">EZ </span><span style="color: var(--white);">LIFT PRESSURE WASH</span>
+  </div>
+  <p class="footer-phone">📞 (555) 000-0000</p>
+  <p>© 2025 EZ Lift Pressure Wash. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
