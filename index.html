@@ -152,11 +152,17 @@ img { display: block; max-width: 100%; }
    ============================================================ */
 .desktop-nav {
   display: none;
-  background: var(--blue-dark);
-  border-bottom: 3px solid var(--orange);
-  position: sticky;
-  top: 0;
-  z-index: 100;
+}
+
+@media (min-width: 769px) {
+  .desktop-nav {
+    display: block; /* Shows it on desktop devices */
+    background: var(--blue-dark);
+    border-bottom: 3px solid var(--orange);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
 }
 
 .desktop-nav-inner {
