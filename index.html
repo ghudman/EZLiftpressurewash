@@ -700,25 +700,30 @@ footer p.copy {
     min-height: 52px;
 }
 
-  .hero-btn-primary {
+  .hero-btn-primary,
+.hero-btn-primary:link,
+.hero-btn-primary:visited,
+.hero-btn-primary:hover,
+.hero-btn-primary:active {
     background: var(--orange);
-    color: var(--white);
-    text-decoration: none;
+    color: #FFFFFF !important;
+    text-decoration: none !important;
     padding: 15px 36px;
     border-radius: 8px;
     font-family: 'Oswald', sans-serif;
     font-size: 18px;
     font-weight: 600;
     letter-spacing: 1px;
-    transition: background 0.2s;
-  }
+}
 
-  .hero-btn-primary:hover { background: var(--orange-dark); }
-
-  .hero-btn-outline {
+  .hero-btn-outline,
+.hero-btn-outline:link,
+.hero-btn-outline:visited,
+.hero-btn-outline:hover,
+.hero-btn-outline:active {
     background: transparent;
-    color: var(--white);
-    text-decoration: none;
+    color: #FFFFFF !important;
+    text-decoration: none !important;
     padding: 14px 36px;
     border-radius: 8px;
     border: 2px solid rgba(255,255,255,0.35);
@@ -726,10 +731,7 @@ footer p.copy {
     font-size: 18px;
     font-weight: 600;
     letter-spacing: 1px;
-    transition: border-color 0.2s;
-  }
-
-  .hero-btn-outline:hover { border-color: rgba(255,255,255,0.7); }
+}
 
   /* Stats expand */
   .stat-num { font-size: 32px; }
@@ -905,7 +907,6 @@ a[x-apple-data-detectors]:active {
 
     <!-- Desktop buttons (hidden on mobile via CSS) -->
     <div class="hero-btns" aria-label="Contact options">
-      <a href="tel:5184103261" class="hero-btn-primary">📞 Call (518) 410-3261</a>
       <a href="mailto:hudmangarret@gmail.com" class="hero-btn-outline">Email for a Quote</a>
     </div>
   </div>
