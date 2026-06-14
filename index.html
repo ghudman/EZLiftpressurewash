@@ -659,7 +659,7 @@ footer p.copy {
 /* ============================================================
    DESKTOP OVERRIDES (768px+)
    ============================================================ */
-@media (min-width: 768px) {
+@media (min-width: 769px) {
 
   .desktop-nav { display: block; }
 
@@ -683,10 +683,20 @@ footer p.copy {
   .cta-bar { display: none; }
 
   .hero-btns {
-    display: none;
+    display: flex;
     gap: 1rem;
     justify-content: center;
     margin-top: 1.75rem;
+    flex-wrap: wrap;
+}
+
+.hero-btn-primary,
+.hero-btn-outline {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    min-height: 52px;
 }
 
   .hero-btn-primary {
@@ -781,6 +791,31 @@ footer p.copy {
   footer { text-align: left; }
 
   .gbp-banner { margin: 1.5rem auto 0; max-width: 1100px; }
+}
+
+/* Force CTA buttons to render as buttons */
+.btn-call,
+.btn-text-msg,
+.hero-btn-primary,
+.hero-btn-outline,
+.btn-white {
+    text-decoration: none !important;
+}
+
+.btn-call:visited,
+.btn-text-msg:visited,
+.hero-btn-primary:visited,
+.hero-btn-outline:visited,
+.btn-white:visited {
+    color: inherit;
+}
+
+.btn-call:hover,
+.btn-text-msg:hover,
+.hero-btn-primary:hover,
+.hero-btn-outline:hover,
+.btn-white:hover {
+    text-decoration: none;
 }
 
 </style>
