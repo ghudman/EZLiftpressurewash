@@ -7,6 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="format-detection" content="telephone=no">
 
 <!-- ============================================================
      PRIMARY SEO TAGS
@@ -816,6 +817,19 @@ footer p.copy {
 .hero-btn-outline:hover,
 .btn-white:hover {
     text-decoration: none;
+}
+
+/* Prevent iPhone from turning phone numbers/emails blue */
+a[x-apple-data-detectors],
+a[x-apple-data-detectors]:link,
+a[x-apple-data-detectors]:visited,
+a[x-apple-data-detectors]:hover,
+a[x-apple-data-detectors]:active {
+    color: inherit !important;
+    text-decoration: none !important;
+    font-size: inherit !important;
+    font-family: inherit !important;
+    font-weight: inherit !important;
 }
 
 </style>
